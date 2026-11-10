@@ -13,7 +13,7 @@ const API_BASE_URL =
  * and response interceptors for standardized error handling and 401 recovery.
  */
 export const apiClient: AxiosInstance = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_BASE_URL}`,
   timeout: 15000,
   headers: {
     Accept: "application/json",
