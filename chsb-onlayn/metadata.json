@@ -1,0 +1,6 @@
+{
+  "name": "School CHSB — Online Examination Platform",
+  "description": "Institutional online examination platform inspired by CHSB PIIMA, featuring student, teacher, and administrator portals with real-time synchronized exams, question navigation, and results management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
