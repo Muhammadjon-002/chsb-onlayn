@@ -1,0 +1,22 @@
+
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "chsb-onlayn": {
+      "root": "chsb-onlayn",
+      "framework": "vite"
+    },
+    "backend": {
+      "root": "chsb-onlayn/backend",
+      "framework": "express"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    }
+  ]
+}
