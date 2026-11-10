@@ -5,7 +5,7 @@ import axios, {
 } from "axios";
 
 const API_BASE_URL =
-  'https://chsb-onlayn-w2ot.vercel.app';
+  'https://chsb-backend.vercel.app/';
 
 /**
  * Centralized Axios client for SCHOOL CHSB examination platform.
