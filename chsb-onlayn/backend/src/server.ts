@@ -11,11 +11,7 @@ if (!process.env.DATABASE_URL || !process.env.JWT_SECRET)
   throw new Error("DATABASE_URL va JWT_SECRET .env faylida bo‘lishi shart.");
 const app = express();
 app.use((helmet as any)());
-app.use(
-  cors({
-    origin: process.env.CLIENT_ORIGIN?.split(",") ?? "http://localhost:3000",
-  }),
-);
+app.use(cors(),);
 app.use(express.json({ limit: "2mb" }));
 app.get("/api/health", (_req, res) =>
   res.json({ success: true, message: "CHSB API ishlayapti" }),
