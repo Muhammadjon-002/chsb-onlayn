@@ -6,7 +6,7 @@
       "framework": "vite"
     },
     "backend": {
-      "root": "backend",
+      "root": "chsb-onlayn/backend",
       "framework": "express",
       "buildCommand": "npm run build",
       "outputDirectory": "dist"
