@@ -12,7 +12,7 @@ export const authService = {
    */
   async login(username: string, password: string): Promise<AuthResponse> {
     if (USE_REAL_BACKEND) {
-      const res = await apiClient.post<{ data: AuthResponse }>("/auth/login", {
+      const res = await apiClient.post<{ data: AuthResponse }>("/api/auth/login", {
         username: username.trim(),
         password,
       });
@@ -83,7 +83,7 @@ export const authService = {
   async logout(): Promise<void> {
     if (USE_REAL_BACKEND) {
       try {
-        await apiClient.post("/auth/logout");
+        await apiClient.post("/api/auth/logout");
       } catch {
         // Ignore network errors on logout
       }
