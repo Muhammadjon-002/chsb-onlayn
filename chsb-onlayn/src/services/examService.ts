@@ -11,7 +11,7 @@ export const examService = {
    */
   async getStudentExams(student: User): Promise<Exam[]> {
     if (USE_REAL_BACKEND) {
-      const res = await apiClient.get<{ data: Exam[] }>(`/student/exams`);
+      const res = await apiClient.get<{ data: Exam[] }>(`/api/student/exams`);
       return res.data.data;
     }
 
@@ -50,7 +50,7 @@ export const examService = {
     if (USE_REAL_BACKEND) {
       const res = await apiClient.get<{
         data: { exam: Exam; session: StudentExamSession };
-      }>(`/student/exams/${examId}`);
+      }>(`/api/student/exams/${examId}`);
       return res.data.data;
     }
 

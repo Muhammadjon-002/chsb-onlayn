@@ -12,7 +12,7 @@ export const resultService = {
   async getStudentResults(studentId: string): Promise<ExamResult[]> {
     if (USE_REAL_BACKEND) {
       const res = await apiClient.get<{ data: ExamResult[] }>(
-        `/student/results`,
+        `/api/student/results`,
       );
       return res.data.data;
     }
@@ -42,7 +42,7 @@ export const resultService = {
   async getExamAnalysis(resultId: string): Promise<Exam> {
     if (USE_REAL_BACKEND) {
       const res = await apiClient.get<{ data: Exam }>(
-        `/student/results/${resultId}/analysis`,
+        `/api/student/results/${resultId}/analysis`,
       );
       return res.data.data;
     }
