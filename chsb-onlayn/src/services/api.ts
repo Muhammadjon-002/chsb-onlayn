@@ -6,7 +6,7 @@ import axios, {
 
 // API URL oxiridagi ortiqcha slash (/) belgisi bo'lsa, uni avtomatik olib tashlaymiz
 const rawBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
-const API_BASE_URL = rawBaseUrl.endsWith("/") ? rawBaseUrl.slice(0, -1) : rawBaseUrl;
+const API_BASE_URL = "https://chsb-backend.vercel.app";
 
 /**
  * Centralized Axios client for SCHOOL CHSB examination platform.
