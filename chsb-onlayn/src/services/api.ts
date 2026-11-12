@@ -4,8 +4,9 @@ import axios, {
   InternalAxiosRequestConfig,
 } from "axios";
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000";
+// API URL oxiridagi ortiqcha slash (/) belgisi bo'lsa, uni avtomatik olib tashlaymiz
+const rawBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_BASE_URL = rawBaseUrl.endsWith("/") ? rawBaseUrl.slice(0, -1) : rawBaseUrl;
 
 /**
  * Centralized Axios client for SCHOOL CHSB examination platform.
@@ -13,18 +14,19 @@ const API_BASE_URL =
  * and response interceptors for standardized error handling and 401 recovery.
  */
 export const apiClient: AxiosInstance = axios.create({
-  baseURL: `${API_BASE_URL}`,
-  timeout: 15000,
+  baseURL: API_BASE_URL,
+  timeout: 30000,
   headers: {
     Accept: "application/json",
   },
 });
+
 // Request interceptor: Inject Bearer token from localStorage
 apiClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = localStorage.getItem("chsb_auth_token");
     if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token} `;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
@@ -38,7 +40,6 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
     if (error.response?.status === 401) {
-      // In a real environment, trigger refresh token or clear session
       localStorage.removeItem("chsb_auth_token");
       localStorage.removeItem("chsb_current_user");
       if (window.location.pathname !== "/login") {
